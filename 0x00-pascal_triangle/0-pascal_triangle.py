@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""pascals never ending tree"""
+"""a module for the pascal triangle"""
 
 
 def pascal_triangle(n):
-    """this method draws pascals triangle given an integer n"""
+    """this function returns a pascal tringle"""
     triangle = []
 
     if (n <= 0):
