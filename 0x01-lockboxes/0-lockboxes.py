@@ -9,16 +9,18 @@ def canUnlockAll(boxes):
     using the breadth-first search (BFS) algorithm
     to solve the lockboxes
     """
-    n = len(boxes)
-    unlocked = [False]*n
-    unlocked[0] = True
-    q = deque([0])
 
-    while q:
-        box = q.popleft()
-        for key in boxes[box]:
-            if not unlocked[key]:
-                unlocked[key] = True
-                q.append(key)
+    if boxes is None or boxes == []:
+        return False
 
-    return all(unlocked)
+    num_box = len(boxes)
+    keys = [0]  # Start with the first box unlocked
+
+    for w in keys:
+        for z in boxes[w]:
+            if z not in keys and z < num_box:
+                keys.append(z)
+
+    if len(keys) != num_box:  # Check if all boxes can be opened
+        return False
+    return True
