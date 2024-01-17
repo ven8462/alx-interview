@@ -3,13 +3,15 @@
 
 
 def minOperations(n):
-    """ Minimum Operations"""
-    dp = [float('inf')]*(n+1)
-    dp[0] = 0
-    for i in range(1, n+1):
-        if i % 2 == 0:
-            dp[i] = min(dp[i], dp[i//2] + 1)
-        if i % 3 == 0:
-            dp[i] = min(dp[i], dp[i//3] + 2)
-        dp[i] = min(dp[i], dp[i-1] + 1)
-    return dp[n] if dp[n] != float('inf') else 0
+    """ Minimum Operations """
+    if n <= 1:
+        return 0
+    x = 2
+    y = 0
+    while x <= n:
+        if n % x == 0:
+            y += x
+            n = n / x
+        else:
+            x += 1
+    return y
