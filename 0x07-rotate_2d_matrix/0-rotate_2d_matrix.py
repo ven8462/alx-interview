@@ -7,7 +7,7 @@ Rotate 2D Matrix
 def rotate_2d_matrix(matrix):
     """
     rotates an n by n matrix
-    clockwise 90 degrees 
+    clockwise 90 degrees
     """
     n = len(matrix)
 
