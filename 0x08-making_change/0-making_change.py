@@ -10,17 +10,15 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    if len(coins) is 0:
+    count = 0
+    idx = 0
+    coins.sort(reverse=True)
+
+    while total > 0 and idx < len(coins):
+        largest = coins[idx]
+        count += total // largest
+        total %= largest
+        idx += 1
+    if total != 0:
         return -1
-    coins = sorted(coins)
-    change_dynamic = [float('inf')] * (total + 1)
-    change_dynamic[0] = 0
-    for i in range(total + 1):
-        for coin in coins:
-            if coin > i:
-                break
-            if change_dynamic[i - coin] != -1:
-                change_dynamic[i] = min(change_dynamic[i - coin] + 1, change_dynamic[i])
-    if change_dynamic[total] == float('inf'):
-        return -1
-    return change_dynamic[total]
+    return count
